@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>Задача 5.</h1>
+   <p>Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</p>
+   <script>
+      let numberOfSec = parseInt(prompt('Введіть кількість секунд', ''))
+      let numberOfMin = numberOfSec / 60
+      let numberOfHours = numberOfMin / 60
+      document.write(`
+<div>З початку доби пройшло ${numberOfSec} секунд, ${parseInt(numberOfMin)} хвилин, ${parseInt(numberOfHours)} годин</div>
+`)
+   </script>
+</body>
+
+</html>
