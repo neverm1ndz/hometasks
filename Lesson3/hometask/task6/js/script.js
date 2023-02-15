@@ -32,5 +32,5 @@ else if (enteredDayNum === 7)
 `)
 else
    document.write(`
-<p>Некоректний номер</p>
+<p>Некоректний номер дня</p>
 `)
