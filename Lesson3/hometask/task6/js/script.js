@@ -26,7 +26,7 @@ else if (enteredDayNum === 6)
    document.write(`
 <p>Субота</p>
 `)
-else if (enteredDayNum === 6)
+else if (enteredDayNum === 7)
    document.write(`
 <p>Неділя</p>
 `)
