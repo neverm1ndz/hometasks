@@ -8,7 +8,7 @@ if (amountMoney < productPrice)
    document.write(`
 <p>Вибачте, будь ласка, у вас не вистачає грошей</p>
 `)
-else if (amountMoney % productPrice >= lotteryPrice)
+else if (amountMoney - productPrice >= lotteryPrice)
    document.write(`
 <p>Купіть лотерею за ${lotteryPrice} грн</p>
 `)
