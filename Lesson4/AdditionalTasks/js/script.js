@@ -305,37 +305,35 @@
 
 // 9. Дано 4-значне число, поміняти дві найбільші цифри місцями
 
-// const num = parseInt(prompt('Введіть 4-значне число'))
-// let num1 = Math.floor(num / 1000)
-// let num2 = Math.floor((num / 100) % 10)
-// let num3 = Math.floor((num / 10) % 10)
-// let num4 = num % 10
+const num = parseInt(prompt('Введіть 4-значне число'))
+let num1 = Math.floor(num / 1000)
+let num2 = Math.floor((num / 100) % 10)
+let num3 = Math.floor((num / 10) % 10)
+let num4 = num % 10
 
-// let max1 = num1, max2 = -Infinity
+let max1 = num1, max2 = -Infinity
 
-// if (num2 > max1) max1 = num2
-// if (num3 > max1) max1 = num3
-// if (num4 > max1) max1 = num4
+if (num2 > max1) max1 = num2
+if (num3 > max1) max1 = num3
+if (num4 > max1) max1 = num4
 
-// if (num1 < max1) max2 = num1
-// if (num2 > max2 && num2 < max1) max2 = num2
-// if (num3 > max2 && num3 < max1) max2 = num3
-// if (num4 > max2 && num4 < max1) max2 = num4
+if (num1 < max1) max2 = num1
+if (num2 > max2 && num2 < max1) max2 = num2
+if (num3 > max2 && num3 < max1) max2 = num3
+if (num4 > max2 && num4 < max1) max2 = num4
 
-// if (num1 === max1) num1 = max2
-// else if (num1 === max2) num1 = max1
+if (num1 === max1) num1 = max2
+else if (num1 === max2) num1 = max1
+if (num2 === max1) num2 = max2
+else if (num2 === max2) num2 = max1
+if (num3 === max1) num3 = max2
+else if (num3 === max2) num3 = max1
+if (num4 === max1) num4 = max2
+else if (num4 === max2) num4 = max1
 
-// if (num2 === max1) num2 = max2
-// else if (num2 === max2) num2 = max1
 
-// if (num3 === max1) num3 = max2
-// else if (num3 === max2) num3 = max1
 
-// if (num4 === max1) num4 = max2
-// else if (num4 === max2) num4 = max1
-
-// console.log(parseInt(`${num1}${num2}${num3}${num4}`));
-
+console.log(parseInt(`${num1}${num2}${num3}${num4}`));
 
 
 

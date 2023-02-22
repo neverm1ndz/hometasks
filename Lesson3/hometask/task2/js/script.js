@@ -7,12 +7,12 @@ const lotteryPrice = 4
 if (amountMoney < productPrice)
    document.write(`
 <p>Вибачте, будь ласка, у вас не вистачає грошей</p>
-`)
+   `)
 else if (amountMoney - productPrice >= lotteryPrice)
    document.write(`
 <p>Купіть лотерею за ${lotteryPrice} грн</p>
 `)
 else
    document.write(`
- <p>Дякуємо за покупку</p>
+<p>Дякуємо за покупку</p>
  `)
