@@ -16,8 +16,10 @@ function getTempPositiveAverage() {
    return tempPositiveAverage
 }
 
-let tempPositiveAverage = getTempPositiveAverage(10, 14, -5, -6, 21, -5, 5, 6)
+let tempPositiveAverage1 = getTempPositiveAverage(10, 14, -5, -6, 21, -5, 5, 6)
+let tempPositiveAverage2 = getTempPositiveAverage(10, -2, -5, -6, -4, -5, 5, 6)
 
 document.write(`
-Середня температура додатніх показників температруи - ${tempPositiveAverage}
+Середня температура додатніх показників температруи - ${tempPositiveAverage1}<br>
+Середня температура додатніх показників температруи - ${tempPositiveAverage2}
 `)
