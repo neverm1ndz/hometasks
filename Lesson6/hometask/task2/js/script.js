@@ -90,8 +90,6 @@ document.write(`
   Загальна кількість клієнтів на вихідних - ${totalVisitorsHolidays}
 `)
 
-console.log(visitorsList, daysVisitorsLess_20, minVisitorsDays, maxVisitorsDays, totalVisitorsWorkDays, totalVisitorsHolidays);
-
 
 
 
