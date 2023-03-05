@@ -17,19 +17,19 @@ function getPaymentForPeriod(paymentList, startMonth, endMonth) {
    return paymentSum
 }
 
-function getPaymentForEvenMonths(monthsNumber) {
+function getPaymentForEvenMonths(paymentList) {
    let paymentSum = 0
-   for (let i = 1; i < monthsNumber.length; i++) {
+   for (let i = 1; i < paymentList.length; i++) {
       if (i % 2 !== 0)
-         paymentSum += monthsNumber[i]
+         paymentSum += paymentList[i]
    }
    return paymentSum
 }
 
-function getPaymentForAnyMonths(monthsNumber, ...numbers) {
+function getPaymentForAnyMonths(paymentList, ...monthsNumbers) {
    let paymentSum = 0
    for (let i = 0; i < numbers.length; i++) {
-      paymentSum += monthsNumber[numbers[i] - 1]
+      paymentSum += paymentList[monthsNumbers[i] - 1]
    }
    return paymentSum
 }
