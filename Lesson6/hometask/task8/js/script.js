@@ -18,7 +18,7 @@ function getReward(list) {
    let sum = 0
    let usersNum
    do {
-      usersNum = parseInt(prompt('Введіть номер елемента'))
+      usersNum = parseInt(prompt('Введіть номер елемента (1-10)'))
       if (isFinite(usersNum))
          sum += list[usersNum - 1]
    }
@@ -28,8 +28,9 @@ function getReward(list) {
 
 const listRandomNums = getListRandomNums(10)
 const usersReward = getReward(listRandomNums)
+let result
 
-if (usersReward > 0) document.write(`Ви виграли ${usersReward}`)
-else document.write(`Ви програли ${usersReward}`)
+if (usersReward > 0) result = `Ви виграли ${usersReward}`
+else result = `Ви програли ${usersReward}`
 
-console.log(listRandomNums);
+console.log(result);
