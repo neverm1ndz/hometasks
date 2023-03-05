@@ -28,7 +28,7 @@ function getPaymentForEvenMonths(paymentList) {
 
 function getPaymentForAnyMonths(paymentList, ...monthsNumbers) {
    let paymentSum = 0
-   for (let i = 0; i < numbers.length; i++) {
+   for (let i = 0; i < monthsNumbers.length; i++) {
       paymentSum += paymentList[monthsNumbers[i] - 1]
    }
    return paymentSum
