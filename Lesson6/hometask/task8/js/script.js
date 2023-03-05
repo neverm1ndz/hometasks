@@ -1,8 +1,7 @@
 //  Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
 
 function getRandomNum() {
-   let randomNum = (-500) + Math.floor(Math.random() * 1001)
-   return randomNum
+   return (-500) + Math.floor(Math.random() * 1001)
 }
 
 function getListRandomNums(elementsNum) {
@@ -33,4 +32,5 @@ let result
 if (usersReward > 0) result = `Ви виграли ${usersReward}`
 else result = `Ви програли ${usersReward}`
 
-console.log(result);
+document.write(result)
+console.log(listRandomNums);
