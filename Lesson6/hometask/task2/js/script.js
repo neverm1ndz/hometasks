@@ -37,50 +37,35 @@ function getMaxVisitors(visitorsList) {
   return maxVisitorsValue
 }
 
-function getMinVisitorsDays(visitorsList, minVisitorsValue) {
+function getMinOrMaxVisitorsDays(visitorsList, visitorsValue) {
   let arr = []
   for (let i = 0; i < visitorsList.length; i++) {
-    if (visitorsList[i] === minVisitorsValue) arr.push(i + 1)
+    if (visitorsList[i] === visitorsValue) arr.push(i + 1)
   }
   return arr
 }
 
-function getMaxVisitorsDays(visitorsList, maxVisitorsValue) {
-  let arr = []
-  for (let i = 0; i < visitorsList.length; i++) {
-    if (visitorsList[i] === maxVisitorsValue) arr.push(i + 1)
-  }
-  return arr
-}
-
-function getTotalVisitorsWorkDays(visitorsList) {
+function getTotalVisitorsDays(visitorsList, startDay, endDay) {
   let totalVisitors = 0
-  for (let i = 0; i < 5; i++) {
-    totalVisitors += visitorsList[i]
-  }
-  return totalVisitors
-}
-
-function getTotalVisitorsHolidays(visitorsList) {
-  let totalVisitors = 0
-  for (let i = 5; i < visitorsList.length; i++) {
+  for (let i = startDay - 1; i < endDay; i++) {
     totalVisitors += visitorsList[i]
   }
   return totalVisitors
 }
 
 const visitorsList = getVisitorsList(7)
+console.log(visitorsList);
 
 const daysVisitorsLess_20 = getDaysVisitorsLess_20(visitorsList)
 
 const minVisitorsValue = getMinVisitors(visitorsList)
-const minVisitorsDays = getMinVisitorsDays(visitorsList, minVisitorsValue)
-
 const maxVisitorsValue = getMaxVisitors(visitorsList)
-const maxVisitorsDays = getMaxVisitorsDays(visitorsList, maxVisitorsValue)
 
-const totalVisitorsWorkDays = getTotalVisitorsWorkDays(visitorsList)
-const totalVisitorsHolidays = getTotalVisitorsHolidays(visitorsList)
+const minVisitorsDays = getMinOrMaxVisitorsDays(visitorsList, minVisitorsValue)
+const maxVisitorsDays = getMinOrMaxVisitorsDays(visitorsList, maxVisitorsValue)
+
+const totalVisitorsWorkDays = getTotalVisitorsDays(visitorsList, 1, 5)
+const totalVisitorsHolidays = getTotalVisitorsDays(visitorsList, 6, 7)
 
 document.write(`
   Номери днів, протягом яких кількість відвідувачів була меншою за 20 - ${daysVisitorsLess_20}<br>
