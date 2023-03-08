@@ -81,8 +81,9 @@
 
 // console.log(getArray(...array));
 
-let a = 7.000
-if (a % 1 === 0) console.log('ok')
-else console.log('no');
+let arr = [1, 2, 3]
+let arr2 = arr
+arr[1] = [3, 4, 5]
+console.log(arr2);
 
 
