@@ -2,8 +2,7 @@
 
 function getTaxValue(array) {
    const tax = 0.2
-   let taxArray = array.map(element => element *= tax)
-   return taxArray
+   return array.map(element => element * tax)
 }
 
 let pricesList = [200, 500, 100, 1200, 1500, 800, 2500, 300]

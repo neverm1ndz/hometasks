@@ -32,35 +32,43 @@
 
 // 2. Танчики. На полі з 10 клітинок розміщують танк. За один крок танк може переміщуватися на відстань від 0 до 1 у  будь-якому напрямку (в межах поля). При влучанні броня танка пошкоджується на 30 балів (всього 100). Гра продовжується поки або не закінчаться снаряди (кількість вводиться з клавіатури) або не буде влучання.
 
-let position = 1 + Math.floor(Math.random() * 10)
-let health = 100
-let shells = parseInt(prompt('Введіть кількість снарядів'))
+// let position = 1 + Math.floor(Math.random() * 10)
+// let health = 100
+// let shells = parseInt(prompt('Введіть кількість снарядів'))
 
-do {
-	let step
-	let shot = parseInt(prompt(`${position} Введіть номер клітинки для пострілу`))
-	if (shot > 10 || shot < 1 || !isFinite(shot)) {
-		alert('Некоректний номер клітинки')
-		console.log(shot)
-		continue
-	}
-	if (shot === position) {
-		health -= 30
-		if (health > 0)
-			alert(`Ви підбили танк, у нього залишилось ${health} броні`)
-	}
-	else alert('Ви промахнулись')
-	if (position === 10) step = (-1) + Math.floor(Math.random() * 2)
-	else if (position === 1) step = Math.floor(Math.random() * 2)
-	else step = -1 + Math.floor(Math.random() * 3)
-	shells -= 1
-	position += step
-	alert(`Залишилось ${shells}`)
-}
+// do {
+// 	let step
+// 	let shot = parseInt(prompt(`${position} Введіть номер клітинки для пострілу`))
+// 	if (shot > 10 || shot < 1 || !isFinite(shot)) {
+// 		alert('Некоректний номер клітинки')
+// 		console.log(shot)
+// 		continue
+// 	}
+// 	if (shot === position) {
+// 		health -= 30
+// 		if (health > 0)
+// 			alert(`Ви підбили танк, у нього залишилось ${health} броні`)
+// 	}
+// 	else alert('Ви промахнулись')
+// 	if (position === 10) step = (-1) + Math.floor(Math.random() * 2)
+// 	else if (position === 1) step = Math.floor(Math.random() * 2)
+// 	else step = -1 + Math.floor(Math.random() * 3)
+// 	shells -= 1
+// 	position += step
+// 	alert(`Залишилось ${shells}`)
+// }
 
-while (health > 0 && shells !== 0)
+// while (health > 0 && shells !== 0)
 
-if (health < 0) alert('Ви знищили танк')
-else if (shells === 0) alert('У вас закінчились снаряди')
+// if (health < 0) alert('Ви знищили танк')
+// else if (shells === 0) alert('У вас закінчились снаряди')
 
 
+let arr1 = [2, 4, 5, 7, 9, 2, 5, 6]
+
+let arr2 = [...arr1]
+console.log(arr2);
+
+arr1.at(-1) = 8
+console.log(arr1);
+console.log(arr2);
