@@ -23,7 +23,8 @@ console.log(greaterThan_1000)
 //2. Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
 
 const indexGreaterThan_1000 = pricesList.reduce((prevValue, element, index) => {
-   if (element > 1000) prevValue.push(index)
+   if (element > 1000)
+      return [...prevValue, index]
    return prevValue
 }, [])
 console.log('Номери тих, що більші за 1000 грн.')
