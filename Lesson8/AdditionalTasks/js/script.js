@@ -63,13 +63,27 @@
 // if (health < 0) alert('Ви знищили танк')
 // else if (shells === 0) alert('У вас закінчились снаряди')
 
+// let array = [1, 2, 3, 4, 5, 6, 7, 8]
 
-let array = [1, 2, 3, 4, 5]
+// function getArray(...array) {
+// 	let counter = 0
+// 	let sum = 0
+// 	for (let i = 0; i < array.length; i++) {
+// 		if (array[i] % 2 === 0) {
+// 			counter++
+// 			sum += array[i]
+// 		}
+// 	}
+// 	console.log(sum);
 
-function invert(array) {
-	array.forEach((element, index, array) => array[index] *= (-1))
-	return array
-}
-console.log(invert(array))
+// 	return sum / counter
+// }
 
-// console.log(array[0]);
+// console.log(getArray(...array));
+
+let arr = [1, 2, 3]
+let arr2 = arr
+arr[1] = [3, 4, 5]
+console.log(arr2);
+
+
