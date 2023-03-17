@@ -19,7 +19,7 @@ function gameSeaBattle(battleField, shipsNum, shotsNum) {
    let result
    do {
       alert(JSON.stringify(battleField))
-      let col = parseInt(prompt('Введіть номер стовпця (координати X від 1 до 6)'))
+      let col = parseInt(prompt('Введіть номер стовбця (координати X від 1 до 6)'))
       let row = parseInt(prompt('Введіть номер рядка (координати Y від 1 до 6)'))
       shotsNum--
       if (battleField[row - 1][col - 1] === 1) {

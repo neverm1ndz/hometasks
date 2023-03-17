@@ -1,7 +1,5 @@
-
-arr = [5, 3, 7, 9, 2, 3, 6, 3, 1, 4, 7, 4, 3]
-
 // Сортування вставками
+arr = [5, 3, 7, 9, 2, 3, 6, 3, 1, 4, 7, 4, 3]
 
 function insertSort(arr) {
 	for (let k = 1; k < arr.length; k++) {
@@ -34,13 +32,3 @@ function binarySearch(arr, searchNum) {
 }
 
 console.log(binarySearch(arr, 0));
-
-
-// Сортування вставками
-
-
-
-
-
-
-// Бінарний пошук

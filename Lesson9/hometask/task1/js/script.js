@@ -134,7 +134,7 @@ function getChessBoardElementsSum(table) {
 }
 
 const tableRows = parseInt(prompt('Введіть кількість рядків'))
-const tableColumns = parseInt(prompt('Введіть кількість стовбців'))
+const tableColumns = parseInt(prompt('Введіть кількість стовпців'))
 const tableArray = generateTable(tableRows, tableColumns, 1, 10)
 const tableRowsHalf = Math.floor(tableRows / 2)
 const tableColumnsHalf = Math.floor(tableColumns / 2)
