@@ -1,40 +1,50 @@
-// Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+//   Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
 
-function getRandomNum(max) {
-   return Math.floor(Math.random() * max)
-}
+let array = ['Ivan', 'Andriy', 'Mary', 'Eugen', 'Olga', 'Olexandr', 'Bogdan']
 
-function createBattleField(shipsNum, fieldSize) {
-   let gameField = new Array(fieldSize).fill(0).map(() => new Array(fieldSize).fill(0))
-   for (let i = 0; i < shipsNum; i++) {
-      let row = getRandomNum(fieldSize)
-      let col = getRandomNum(fieldSize)
-      if (gameField[row][col] === 1) i--
-      else gameField[row][col] = 1
-   }
-   return gameField
-}
-
-function gameSeaBattle(battleField, shipsNum, shotsNum) {
-   let result
+function getSortArray(array) {
+   let changes
    do {
-      alert(JSON.stringify(battleField))
-      let col = parseInt(prompt('Введіть номер стовбця (координати X від 1 до 6)'))
-      let row = parseInt(prompt('Введіть номер рядка (координати Y від 1 до 6)'))
-      shotsNum--
-      if (battleField[row - 1][col - 1] === 1) {
-         shipsNum--
-         alert(`Ви потопили корабель! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
+      changes = false
+      for (let i = 1; i < array.length; i++) {
+         if (array[i - 1].length > array[i].length) {
+            let temp = array[i - 1]
+            array[i - 1] = array[i]
+            array[i] = temp
+            changes = true
+         }
       }
-      else alert(`Ви промахнулися! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
-   } while (shipsNum > 0 && shotsNum > 0)
-   shipsNum > 0 ? result = 'Ви програли...' : result = 'Ви потопили всі кораблі!'
-   return result
+   } while (changes);
+   return array
 }
 
-const shipsNum = 5
-let shotsNum = parseInt(prompt('Введіть кількість снарядів'))
-let battleField = createBattleField(shipsNum, 6)
-console.log(battleField)
+function findElemWithLength(array, findingLength) {
+   let start = 0
+   let end = array.length - 1
+   while (start <= end) {
+      let middle = Math.floor((start + end) / 2)
+      if (array[middle].length > findingLength) end = middle - 1
+      else if (array[middle].length < findingLength) start = middle + 1
+      else return true
+   }
+   return false
+}
 
-alert(gameSeaBattle(battleField, shipsNum, shotsNum))
+function findIndexElemWithLength(array, findingLength) {
+   let start = 0
+   let end = array.length - 1
+   while (start <= end) {
+      let middle = Math.floor((start + end) / 2)
+      if (array[middle].length > findingLength) end = middle - 1
+      else if (array[middle].length < findingLength) start = middle + 1
+      else return middle
+   }
+   return -1
+}
+
+console.log(getSortArray(array))
+console.log(findElemWithLength(array, 5))
+console.log(findIndexElemWithLength(array, 5))
+
+
+
