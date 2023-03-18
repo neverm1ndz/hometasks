@@ -1,40 +1,49 @@
-// Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+// Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
 
-function getRandomNum(max) {
-   return Math.floor(Math.random() * max)
-}
+let array = ['Ivan', 'Petro', 'Maria', 'Roman', 'Olga', 'Olexandr', 'Pavlo']
 
-function createBattleField(shipsNum, fieldSize) {
-   let gameField = new Array(fieldSize).fill(0).map(() => new Array(fieldSize).fill(0))
-   for (let i = 0; i < shipsNum; i++) {
-      let row = getRandomNum(fieldSize)
-      let col = getRandomNum(fieldSize)
-      if (gameField[row][col] === 1) i--
-      else gameField[row][col] = 1
-   }
-   return gameField
-}
-
-function gameSeaBattle(battleField, shipsNum, shotsNum) {
-   let result
-   do {
-      alert(JSON.stringify(battleField))
-      let col = parseInt(prompt('Введіть номер стовбця (координати X від 1 до 6)'))
-      let row = parseInt(prompt('Введіть номер рядка (координати Y від 1 до 6)'))
-      shotsNum--
-      if (battleField[row - 1][col - 1] === 1) {
-         shipsNum--
-         alert(`Ви потопили корабель! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
+function getSortArray(array) {
+   for (let k = 1; k < array.length; k++) {
+      let currentEl = array[k]
+      let i = k - 1
+      while (i >= 0 && array[i] > currentEl) {
+         array[i + 1] = array[i]
+         i--
       }
-      else alert(`Ви промахнулися! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
-   } while (shipsNum > 0 && shotsNum > 0)
-   shipsNum > 0 ? result = 'Ви програли...' : result = 'Ви потопили всі кораблі!'
-   return result
+      array[i + 1] = currentEl
+   }
+   return arr
 }
 
-const shipsNum = 5
-let shotsNum = parseInt(prompt('Введіть кількість снарядів'))
-let battleField = createBattleField(shipsNum, 6)
-console.log(battleField)
+function findElement(array, element) {
+   let startIndex = 0
+   let lastIndex = array.length - 1
+   while (startIndex <= lastIndex) {
+      let middle = Math.floor((startIndex + lastIndex) / 2)
+      if (array[middle] > element) lastIndex = middle - 1
+      else if (array[middle] < element) startIndex = middle + 1
+      else return true
+   }
+   return false
+}
 
-alert(gameSeaBattle(battleField, shipsNum, shotsNum))
+function findIndexElement(array, element) {
+   let startIndex = 0
+   let lastIndex = array.length - 1
+   while (startIndex <= lastIndex) {
+      let middle = Math.floor((startIndex + lastIndex) / 2)
+      if (array[middle] > element) lastIndex = middle - 1
+      else if (array[middle] < element) startIndex = middle + 1
+      else return middle
+   }
+   return -1
+}
+
+getSortArray(array)
+console.log(array)
+console.log(findElement(array, 'Olga'))
+console.log(findIndexElement(array, 'Olga'))
+
+
+
+

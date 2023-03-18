@@ -1,40 +1,35 @@
-// Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+// Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
 
-function getRandomNum(max) {
-   return Math.floor(Math.random() * max)
+function getRandomNum(min, max) {
+   return min + Math.floor(Math.random() * (max - min + 1))
 }
 
-function createBattleField(shipsNum, fieldSize) {
-   let gameField = new Array(fieldSize).fill(0).map(() => new Array(fieldSize).fill(0))
-   for (let i = 0; i < shipsNum; i++) {
-      let row = getRandomNum(fieldSize)
-      let col = getRandomNum(fieldSize)
-      if (gameField[row][col] === 1) i--
-      else gameField[row][col] = 1
+function getRandomArray(length, min, max) {
+   let array = []
+   for (let i = 0; i < length; i++) {
+      let randomNum = getRandomNum(min, max)
+      array.push(randomNum)
    }
-   return gameField
+   return array
 }
 
-function gameSeaBattle(battleField, shipsNum, shotsNum) {
-   let result
-   do {
-      alert(JSON.stringify(battleField))
-      let col = parseInt(prompt('Введіть номер стовбця (координати X від 1 до 6)'))
-      let row = parseInt(prompt('Введіть номер рядка (координати Y від 1 до 6)'))
-      shotsNum--
-      if (battleField[row - 1][col - 1] === 1) {
-         shipsNum--
-         alert(`Ви потопили корабель! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
+function getChangesNumByInsertionSort(array) {
+   let changesNum = 0
+   for (let k = 1; k < array.length; k++) {
+      let currentEl = array[k]
+      let i = k - 1
+      while (i >= 0 && array[i] > currentEl) {
+         array[i + 1] = array[i]
+         i--
+         changesNum++
       }
-      else alert(`Ви промахнулися! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
-   } while (shipsNum > 0 && shotsNum > 0)
-   shipsNum > 0 ? result = 'Ви програли...' : result = 'Ви потопили всі кораблі!'
-   return result
+      array[i + 1] = currentEl
+   }
+   return changesNum
 }
 
-const shipsNum = 5
-let shotsNum = parseInt(prompt('Введіть кількість снарядів'))
-let battleField = createBattleField(shipsNum, 6)
-console.log(battleField)
+let randomArray = getRandomArray(30, 1, 99)
+let changesNum = getChangesNumByInsertionSort(randomArray)
+console.log(randomArray)
+console.log(changesNum)
 
-alert(gameSeaBattle(battleField, shipsNum, shotsNum))

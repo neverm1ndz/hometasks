@@ -13,6 +13,12 @@ function getRandomArray(length, min, max) {
    return array
 }
 
+function swapElements(array, i1, i2) {
+   let temp = array[i1]
+   array[i1] = array[i2]
+   array[i2] = temp
+}
+
 function getChangesNumByBubleSort(array) {
    let changesNum = 0
    let changes
@@ -20,10 +26,7 @@ function getChangesNumByBubleSort(array) {
       changes = false
       for (let i = 1; i < array.length; i++) {
          if (array[i - 1] > array[i]) {
-            // let temp = array[i - 1]
-            // array[i - 1] = array[i]
-            // array[i] = temp
-            [array[i - 1], array[i]] = [array[i], array[i - 1]]
+            swapElements(array, i, i - 1)
             changes = true
             changesNum++
          }

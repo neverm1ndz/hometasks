@@ -1,40 +1,85 @@
 // Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
 
-function getRandomNum(max) {
-   return Math.floor(Math.random() * max)
+function getRandomNum(min, max) {
+   return min + Math.floor(Math.random() * (max - min + 1))
 }
 
-function createBattleField(shipsNum, fieldSize) {
-   let gameField = new Array(fieldSize).fill(0).map(() => new Array(fieldSize).fill(0))
-   for (let i = 0; i < shipsNum; i++) {
-      let row = getRandomNum(fieldSize)
-      let col = getRandomNum(fieldSize)
-      if (gameField[row][col] === 1) i--
-      else gameField[row][col] = 1
+function getRandomArray(length, min, max) {
+   let array = []
+   for (let i = 0; i < length; i++) {
+      let randomNum = getRandomNum(min, max)
+      array.push(randomNum)
    }
-   return gameField
+   return array
 }
 
-function gameSeaBattle(battleField, shipsNum, shotsNum) {
-   let result
-   do {
-      alert(JSON.stringify(battleField))
-      let col = parseInt(prompt('Введіть номер стовбця (координати X від 1 до 6)'))
-      let row = parseInt(prompt('Введіть номер рядка (координати Y від 1 до 6)'))
-      shotsNum--
-      if (battleField[row - 1][col - 1] === 1) {
-         shipsNum--
-         alert(`Ви потопили корабель! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
+function swapElements(array, i1, i2) {
+   let temp = array[i1]
+   array[i1] = array[i2]
+   array[i2] = temp
+}
+
+// function getBubleSort(array) {
+//    let changes
+//    document.write(`${JSON.stringify(array)}<br>`)
+
+//    do {
+//       changes = false
+//       for (let i = 1; i < array.length; i++) {
+//          if (array[i - 1] > array[i]) {
+//             swapElements(array, i, i - 1)
+//             changes = true
+//             document.write(`${JSON.stringify(array)}<br>`)
+//          }
+//       }
+//    } while (changes)
+//    return array
+// }
+
+
+// function getShakeSort(array) {
+//    document.write(`${JSON.stringify(array)}<br>`)
+//    let startIndex = 0
+//    let lastIndex = array.length - 1
+//    while (startIndex < lastIndex) {
+//       for (let i = startIndex; i < lastIndex; i++) {
+//          if (array[i] > array[i + 1]) {
+//             swapElements(array, i, i + 1)
+//             document.write(`${JSON.stringify(array)}<br>`)
+//          }
+//       }
+//       lastIndex--
+//       for (let i = lastIndex; i > startIndex; i--) {
+//          if (array[i] < array[i - 1]) {
+//             swapElements(array, i, i - 1)
+//             document.write(`${JSON.stringify(array)}<br>`)
+//          }
+//       }
+//       startIndex++
+//    }
+//    return array
+// }
+
+
+function getInsertionSort(array) {
+   document.write(`${JSON.stringify(array)}<br>`)
+   for (let k = 1; k < array.length; k++) {
+      let currentEl = array[k]
+      let i = k - 1
+      while (i >= 0 && array[i] > currentEl) {
+         array[i + 1] = array[i]
+         i--
+         document.write(`${JSON.stringify(array)}<br>`)
       }
-      else alert(`Ви промахнулися! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
-   } while (shipsNum > 0 && shotsNum > 0)
-   shipsNum > 0 ? result = 'Ви програли...' : result = 'Ви потопили всі кораблі!'
-   return result
+      array[i + 1] = currentEl
+   }
+   document.write(`${JSON.stringify(array)}<br>`)
+   return array
 }
 
-const shipsNum = 5
-let shotsNum = parseInt(prompt('Введіть кількість снарядів'))
-let battleField = createBattleField(shipsNum, 6)
-console.log(battleField)
+let array = getRandomArray(6, 1, 99)
+// getBubleSort(array)
+// getShakeSort(array)
+getInsertionSort(array)
+console.log(array)
 
-alert(gameSeaBattle(battleField, shipsNum, shotsNum))
