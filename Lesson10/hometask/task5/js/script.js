@@ -12,7 +12,7 @@ function getSortArray(array) {
       }
       array[i + 1] = currentEl
    }
-   return arr
+   return array
 }
 
 function findElement(array, element) {
