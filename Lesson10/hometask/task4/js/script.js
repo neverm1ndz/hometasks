@@ -19,50 +19,50 @@ function swapElements(array, i1, i2) {
    array[i2] = temp
 }
 
-// function getBubleSort(array) {
-//    let changes
-//    document.write(`${JSON.stringify(array)}<br>`)
+function getBubleSort(array) {
+   let changes
+   document.write(`Сортування бульбашкою<br>${JSON.stringify(array)}<br>`)
 
-//    do {
-//       changes = false
-//       for (let i = 1; i < array.length; i++) {
-//          if (array[i - 1] > array[i]) {
-//             swapElements(array, i, i - 1)
-//             changes = true
-//             document.write(`${JSON.stringify(array)}<br>`)
-//          }
-//       }
-//    } while (changes)
-//    return array
-// }
+   do {
+      changes = false
+      for (let i = 1; i < array.length; i++) {
+         if (array[i - 1] > array[i]) {
+            swapElements(array, i, i - 1)
+            changes = true
+            document.write(`${JSON.stringify(array)}<br>`)
+         }
+      }
+   } while (changes)
+   return array
+}
 
 
-// function getShakeSort(array) {
-//    document.write(`${JSON.stringify(array)}<br>`)
-//    let startIndex = 0
-//    let lastIndex = array.length - 1
-//    while (startIndex < lastIndex) {
-//       for (let i = startIndex; i < lastIndex; i++) {
-//          if (array[i] > array[i + 1]) {
-//             swapElements(array, i, i + 1)
-//             document.write(`${JSON.stringify(array)}<br>`)
-//          }
-//       }
-//       lastIndex--
-//       for (let i = lastIndex; i > startIndex; i--) {
-//          if (array[i] < array[i - 1]) {
-//             swapElements(array, i, i - 1)
-//             document.write(`${JSON.stringify(array)}<br>`)
-//          }
-//       }
-//       startIndex++
-//    }
-//    return array
-// }
+function getShakeSort(array) {
+   document.write(`Сортування змішуванням<br>${JSON.stringify(array)}<br>`)
+   let startIndex = 0
+   let lastIndex = array.length - 1
+   while (startIndex < lastIndex) {
+      for (let i = startIndex; i < lastIndex; i++) {
+         if (array[i] > array[i + 1]) {
+            swapElements(array, i, i + 1)
+            document.write(`${JSON.stringify(array)}<br>`)
+         }
+      }
+      lastIndex--
+      for (let i = lastIndex; i > startIndex; i--) {
+         if (array[i] < array[i - 1]) {
+            swapElements(array, i, i - 1)
+            document.write(`${JSON.stringify(array)}<br>`)
+         }
+      }
+      startIndex++
+   }
+   return array
+}
 
 
 function getInsertionSort(array) {
-   document.write(`${JSON.stringify(array)}<br>`)
+   document.write(`Сортування вставками<br>${JSON.stringify(array)}<br>`)
    for (let k = 1; k < array.length; k++) {
       let currentEl = array[k]
       let i = k - 1
@@ -77,9 +77,12 @@ function getInsertionSort(array) {
    return array
 }
 
-let array = getRandomArray(6, 1, 99)
-// getBubleSort(array)
-// getShakeSort(array)
-getInsertionSort(array)
-console.log(array)
+let arrayBuble = getRandomArray(6, 1, 99)
+let arrayShake = [...arrayBuble]
+let arrayInsertion = [...arrayBuble]
+
+getBubleSort(arrayBuble)
+getShakeSort(arrayShake)
+getInsertionSort(arrayInsertion)
+
 
