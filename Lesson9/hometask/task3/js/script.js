@@ -25,6 +25,7 @@ function gameSeaBattle(battleField, shipsNum, shotsNum) {
       if (battleField[row - 1][col - 1] === 1) {
          shipsNum--
          alert(`Ви потопили корабель! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
+         battleField[row - 1][col - 1] = 0
       }
       else alert(`Ви промахнулися! Залишилось ${shipsNum} кораблів та ${shotsNum} снарядів`)
    } while (shipsNum > 0 && shotsNum > 0)
