@@ -12,7 +12,7 @@ function additionSimulator(min, max) {
    let usersNum = parseInt(prompt(`${firstNum} + ${secondNum}`))
    if (usersNum === sum) result = 'Правильно!'
    else result = `Не правильно! Правильна відповідь ${sum}`
-   return alert(result)
+   alert(result)
 }
 
 setInterval(additionSimulator, 10000, 1, 10)

@@ -45,7 +45,4 @@ function getChangesNumByShakeSort(array) {
 let randomArray = getRandomArray(30, 1, 99)
 let changesNum = getChangesNumByShakeSort(randomArray)
 console.log(randomArray)
-console.log(changesNum);
-
-
-
+console.log(changesNum)

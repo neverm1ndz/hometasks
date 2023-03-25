@@ -2,12 +2,9 @@
 
 function getOneLetter(word) {
    let counter = 0
-   let letter
    function getLetter() {
       if (counter === word.length) counter = 0
-      letter = counter
-      counter++
-      return word[letter]
+      return word[counter++]
    }
    return getLetter
 }
