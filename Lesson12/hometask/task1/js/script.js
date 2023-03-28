@@ -216,8 +216,8 @@ function createTwoLists(sitesList) {
    let sitesListWithPriceOver_10000 = []
    for (const site of sitesList) {
       site.price >= 10000
-         ? sitesListWithPriceOver_10000.push(site)
-         : sitesListWithPriceLess_10000.push(site)
+         ? sitesListWithPriceOver_10000.push(JSON.parse(JSON.stringify(site)))
+         : sitesListWithPriceLess_10000.push(JSON.parse(JSON.stringify(site)))
    }
    return { sitesListWithPriceLess_10000, sitesListWithPriceOver_10000 }
 }
