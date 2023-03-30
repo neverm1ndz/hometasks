@@ -1,26 +1,26 @@
 // Сортування вставками
 
-function candiesToBuy(kids) {
-   if (kids === 1) return 1
-   let prev = 1
-   for (let i = 2; i <= kids; i++) {
-      let a = prev
-      let b = i
-      let nsd
-      nsd = GCD(a, b)
-      nsk = (i * prev) / nsd
-      a = nsk
-      prev = nsk
-   }
-   return nsk
-}
+// function candiesToBuy(kids) {
+//    if (kids === 1) return 1
+//    let prev = 1
+//    for (let i = 2; i <= kids; i++) {
+//       let a = prev
+//       let b = i
+//       let nsd
+//       nsd = GCD(a, b)
+//       nsk = (i * prev) / nsd
+//       a = nsk
+//       prev = nsk
+//    }
+//    return nsk
+// }
 
-function GCD(num1, num2) {
-   if (num2 !== 0) return GCD(num2, num1 % num2)
-   else return num1
-}
+// function GCD(num1, num2) {
+//    if (num2 !== 0) return GCD(num2, num1 % num2)
+//    else return num1
+// }
 
-console.log(candiesToBuy(40))
+// console.log(candiesToBuy(40))
 
 //Розбиваємо число на дільники, які будемо використовувати для знаходження НСК
 //(одночасно фільтруємо так, щоб не було таких, що можуть один на одного ділитись без остачі - тобто вони нам не обовʼязкові для знаходження розвʼязку)
