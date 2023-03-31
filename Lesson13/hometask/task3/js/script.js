@@ -21,7 +21,9 @@ function Auto(brand, tankSize, litersNum, seatsNum, passengersNum) {
 
 // Заправка на вказану кількість літрів
 Auto.prototype.getRefueling = function (addedLitersNum) {
-   this.litersNum += addedLitersNum
+   if (this.litersNum + addedLitersNum <= this.tankSize)
+      this.litersNum += addedLitersNum
+   else throw new Error('There is not enough space in the tank')
 }
 
 // Виведення кількості пасажирів
@@ -33,12 +35,14 @@ Auto.prototype.getPassengersNum = function () {
 Auto.prototype.addPassengers = function (addedPassengersNum) {
    if (this.passengersNum + addedPassengersNum <= this.seatsNum)
       this.passengersNum += addedPassengersNum
-   else alert('Не вистачає місць')
+   else throw new Error('There is not enough seats')
 }
 
 // Висадка пасажирів
 Auto.prototype.removePassengers = function (removedPassengersNum) {
-   this.passengersNum -= removedPassengersNum
+   if (this.passengersNum - removedPassengersNum >= 0)
+      this.passengersNum -= removedPassengersNum
+   else throw new Error('There is not enough passengers')
 }
 
 let auto1 = new Auto('Audi', 65, 30, 5, 2)
