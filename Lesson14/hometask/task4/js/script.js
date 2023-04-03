@@ -37,34 +37,18 @@ class TBankomat {
    get Bill_200() {
       return this.#bill_200
    }
-   get sumBill_5() {
-      return this.Bill_5 * 5
-   }
-   get sumBill_10() {
-      return this.Bill_10 * 10
-   }
-   get sumBill_20() {
-      return this.Bill_20 * 20
-   }
-   get sumBill_50() {
-      return this.Bill_50 * 50
-   }
-   get sumBill_100() {
-      return this.Bill_100 * 100
-   }
-   get sumBill_200() {
-      return this.Bill_200 * 200
-   }
+
    get maxSum() {
       return (
-         this.sumBill_5 +
-         this.sumBill_10 +
-         this.sumBill_20 +
-         this.sumBill_50 +
-         this.sumBill_100 +
-         this.sumBill_200
+         this.Bill_5 * 5 +
+         this.Bill_10 * 10 +
+         this.Bill_20 * 20 +
+         this.Bill_50 * 50 +
+         this.Bill_100 * 100 +
+         this.Bill_200 * 200
       )
    }
+
    get minSum() {
       if (this.Bill_5) return 5
       else if (this.Bill_10) return 10
@@ -110,34 +94,34 @@ class TBankomat {
          `)
          return
       }
-      if (this.#bill_200 !== 0 && val / 200 >= 1) {
+      if (this.Bill_200 !== 0 && val / 200 >= 1) {
          this.Bill_200 -= Math.floor(val / 200)
          val = val % 200
       }
-      if (this.#bill_100 !== 0 && val / 100 >= 1) {
+      if (this.Bill_100 !== 0 && val / 100 >= 1) {
          this.Bill_100 -= Math.floor(val / 100)
          val = val % 100
       }
-      if (this.#bill_50 !== 0 && val / 50 >= 1) {
+      if (this.Bill_50 !== 0 && val / 50 >= 1) {
          this.Bill_50 -= Math.floor(val / 50)
          val = val % 50
       }
-      if (this.#bill_20 !== 0 && val / 20 >= 1) {
+      if (this.Bill_20 !== 0 && val / 20 >= 1) {
          this.Bill_20 -= Math.floor(val / 20)
          val = val % 20
       }
-      if (this.#bill_10 !== 0 && val / 10 >= 1) {
+      if (this.Bill_10 !== 0 && val / 10 >= 1) {
          this.Bill_10 -= Math.floor(val / 10)
          val = val % 10
       }
-      if (this.#bill_5 !== 0 && val / 5 >= 1) {
+      if (this.Bill_5 !== 0 && val / 5 >= 1) {
          this.Bill_5 -= Math.floor(val / 5)
          val = val % 5
       }
       if (val > 0)
          document.write(`
    Ваша решта - ${val}грн<br>
-   На жаль, наш банкомат не видає купюри менше 5грн, але ви 
+   На жаль, наш банкомат не видає купюри менше 5грн, але ви
    можете відправити ${val}грн на благодійність<br>
    `)
    }
