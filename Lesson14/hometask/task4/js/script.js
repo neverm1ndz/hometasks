@@ -1,41 +1,161 @@
-// Розробити клас MultChecker для перевірки таблиці множення
-// Поля
-// Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
-// Кількість правильних відповідей
-// Кількість неправильних відповідей
-// Методи
-// Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
-// Перевірка правильності вказаної відповіді
-// render - виведення інформації про тестування на екран
+// Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр
+// кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які
+// може видати банкомат, та метод зняття деякої суми.
 
-class MultChecker {
-   constructor(checkedNum) {
-      this.checkedNum = checkedNum
-      this.correctAnswersNum = 0
-      this.incorrectAnswersNum = 0
+class TBankomat {
+   #bill_5
+   #bill_10
+   #bill_20
+   #bill_50
+   #bill_100
+   #bill_200
+   constructor(bill_5, bill_10, bill_20, bill_50, bill_100, bill_200) {
+      this.Bill_5 = bill_5
+      this.Bill_10 = bill_10
+      this.Bill_20 = bill_20
+      this.Bill_50 = bill_50
+      this.Bill_100 = bill_100
+      this.Bill_200 = bill_200
    }
-   generateTask() {
-      let randomNum = 1 + Math.floor(Math.random() * 10)
-      let correctAnswer = this.checkedNum * randomNum
-      let usersAnswer = parseInt(prompt(`${this.checkedNum} * ${randomNum}`))
-      return { usersAnswer, correctAnswer }
+
+   //-----------GET---------------
+   get Bill_5() {
+      return this.#bill_5
    }
-   checkAnswer() {
-      do {
-         let { usersAnswer, correctAnswer } = this.generateTask()
-         if (usersAnswer === correctAnswer) this.correctAnswersNum++
-         else this.incorrectAnswersNum++
-      } while (confirm('Бажаєте продовжити?'))
+   get Bill_10() {
+      return this.#bill_10
    }
-   render() {
-      document.write(`Число яке перевіряємо - ${this.checkedNum}<br>
-         Правильних відповідей - ${this.correctAnswersNum}<br>
-   Неправильних відповідей - ${this.incorrectAnswersNum}
+   get Bill_20() {
+      return this.#bill_20
+   }
+   get Bill_50() {
+      return this.#bill_50
+   }
+   get Bill_100() {
+      return this.#bill_100
+   }
+   get Bill_200() {
+      return this.#bill_200
+   }
+   get sumBill_5() {
+      return this.Bill_5 * 5
+   }
+   get sumBill_10() {
+      return this.Bill_10 * 10
+   }
+   get sumBill_20() {
+      return this.Bill_20 * 20
+   }
+   get sumBill_50() {
+      return this.Bill_50 * 50
+   }
+   get sumBill_100() {
+      return this.Bill_100 * 100
+   }
+   get sumBill_200() {
+      return this.Bill_200 * 200
+   }
+   get maxSum() {
+      return (
+         this.sumBill_5 +
+         this.sumBill_10 +
+         this.sumBill_20 +
+         this.sumBill_50 +
+         this.sumBill_100 +
+         this.sumBill_200
+      )
+   }
+   get minSum() {
+      if (this.Bill_5) return 5
+      else if (this.Bill_10) return 10
+      else if (this.Bill_20) return 20
+      else if (this.Bill_50) return 50
+      else if (this.Bill_100) return 100
+      else if (this.Bill_200) return 200
+      else return 0
+   }
+
+   //-----------SET---------------
+   set Bill_5(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_5 = val
+   }
+   set Bill_10(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_10 = val
+   }
+   set Bill_20(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_20 = val
+   }
+   set Bill_50(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_50 = val
+   }
+   set Bill_100(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_100 = val
+   }
+   set Bill_200(val) {
+      if (val < 0) throw new Error('Incorrect value')
+      this.#bill_200 = val
+   }
+
+   //-----------METHODS---------------
+
+   getMoney(val) {
+      if (val > this.maxSum) {
+         document.write(`
+         На жаль, ми не маємо такої суми, максимальна сума для видачі - ${this.maxSum}<br>
          `)
+         return
+      }
+      if (this.#bill_200 !== 0 && val / 200 >= 1) {
+         this.Bill_200 -= Math.floor(val / 200)
+         val = val % 200
+      }
+      if (this.#bill_100 !== 0 && val / 100 >= 1) {
+         this.Bill_100 -= Math.floor(val / 100)
+         val = val % 100
+      }
+      if (this.#bill_50 !== 0 && val / 50 >= 1) {
+         this.Bill_50 -= Math.floor(val / 50)
+         val = val % 50
+      }
+      if (this.#bill_20 !== 0 && val / 20 >= 1) {
+         this.Bill_20 -= Math.floor(val / 20)
+         val = val % 20
+      }
+      if (this.#bill_10 !== 0 && val / 10 >= 1) {
+         this.Bill_10 -= Math.floor(val / 10)
+         val = val % 10
+      }
+      if (this.#bill_5 !== 0 && val / 5 >= 1) {
+         this.Bill_5 -= Math.floor(val / 5)
+         val = val % 5
+      }
+      if (val > 0)
+         document.write(`
+   Ваша решта - ${val}грн<br>
+   На жаль, наш банкомат не видає купюри менше 5, але ви 
+   можете відправити ${val}грн на благодійність<br>
+   `)
+   }
+
+   toString() {
+      if (this.maxSum === 0) return `В банкоматі немає грошей<br>`
+      return `
+      Мінімальна сума для видачі - ${this.minSum}<br>
+      Максимальна сума для видачі - ${this.maxSum}<br>
+      `
    }
 }
 
-let multChecker = new MultChecker(7)
+let tBankomat = new TBankomat(50, 45, 40, 35, 30, 25)
 
-multChecker.checkAnswer()
-multChecker.render()
+console.log(tBankomat)
+document.write(tBankomat)
+
+tBankomat.getMoney(768)
+console.log(tBankomat)
+document.write(tBankomat)
