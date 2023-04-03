@@ -32,7 +32,7 @@ class Company {
    // виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
    getServicesThatCanBePerformed(price, deadline) {
       for (const service of this.services) {
-         if (service.price <= price && service.deadline <= deadline)
+         if (service.Price <= price && service.Deadline <= deadline)
             document.write(`${service}<br>`)
       }
    }
@@ -113,7 +113,7 @@ class Service {
    //--------------------------
    toString() {
       return `
-   ${this.title} - ${this.price}грн - ${this.deadline} дн
+   ${this.Title} - ${this.Price}грн - ${this.Deadline} дн
    `
    }
 }
@@ -134,24 +134,19 @@ class Branch {
 
 //-----------------ROZETKA SERVICES-----------------
 
-let rozetkaService1 = new Service('Втановлення розеток', 250, 2),
-   rozetkaService2 = new Service('Заміна проводки', 350, 3),
-   rozetkaService3 = new Service('Заміна лампи', 150, 1)
-let rozetkaServices = [rozetkaService1, rozetkaService2, rozetkaService3]
+let rozetkaServices = []
+rozetkaServices.push(new Service('Втановлення розеток', 250, 2))
+rozetkaServices.push(new Service('Заміна проводки', 350, 3))
+rozetkaServices.push(new Service('Заміна лампи', 150, 1))
 
 //-----------------ROZETKA BRANCHES-----------------
 
-let rozetkaUzhgorod1 = new Branch('Україна', 'Ужгород', 'Свободи', 25),
-   rozetkaMukachevo1 = new Branch('Україна', 'Мукачево', 'Духновича', 20),
-   rozetkaKhust1 = new Branch('Україна', 'Хуст', 'Корятовича', 15),
-   rozetkaUzhgorod2 = new Branch('Україна', 'Ужгород', 'Корзо', 30)
+let rozetkaBranches = []
+rozetkaBranches.push(new Branch('Україна', 'Ужгород', 'Свободи', 25))
+rozetkaBranches.push(new Branch('Україна', 'Мукачево', 'Духновича', 20))
+rozetkaBranches.push(new Branch('Україна', 'Хуст', 'Корятовича', 15))
+rozetkaBranches.push(new Branch('Україна', 'Ужгород', 'Корзо', 30))
 
-let rozetkaBranches = [
-   rozetkaUzhgorod1,
-   rozetkaMukachevo1,
-   rozetkaKhust1,
-   rozetkaUzhgorod2,
-]
 //-----------------ROZETKA CREATION DATE-----------------
 
 let rozetkaCreationDate = new CreationDate(2020, 8)
