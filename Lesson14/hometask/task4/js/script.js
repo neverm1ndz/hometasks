@@ -137,7 +137,7 @@ class TBankomat {
       if (val > 0)
          document.write(`
    Ваша решта - ${val}грн<br>
-   На жаль, наш банкомат не видає купюри менше 5, але ви 
+   На жаль, наш банкомат не видає купюри менше 5грн, але ви 
    можете відправити ${val}грн на благодійність<br>
    `)
    }
@@ -155,7 +155,4 @@ let tBankomat = new TBankomat(50, 45, 40, 35, 30, 25)
 
 console.log(tBankomat)
 document.write(tBankomat)
-
 tBankomat.getMoney(768)
-console.log(tBankomat)
-document.write(tBankomat)
