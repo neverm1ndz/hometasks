@@ -10,13 +10,19 @@
 // виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
 
 class Company {
-   constructor(title, creationDate, services, branches) {
+   constructor(title, { year, month }) {
       this.title = title
-      this.creationDate = creationDate
-      this.services = services
-      this.branches = branches
+      this.creationDate = new CreationDate({ year, month })
+      this.services = []
+      this.branches = []
    }
 
+   addService(service) {
+      this.services.push(service)
+   }
+   addBranch(branch) {
+      this.branches.push(branch)
+   }
    // визначення кількості років існування фірми;
    getNumberOfYears() {
       return new Date().getFullYear() - this.creationDate.Year
@@ -51,7 +57,7 @@ class Company {
 class CreationDate {
    #year
    #month
-   constructor(year, month) {
+   constructor({ year, month }) {
       this.Year = year
       this.Month = month
    }
@@ -132,33 +138,24 @@ class Branch {
    }
 }
 
+//-----------------ROZETKA COMPANY-----------------
+
+let rozetkaCompany = new Company('Rozetka', { year: 2020, month: 8 })
+
 //-----------------ROZETKA SERVICES-----------------
 
-let rozetkaServices = []
-rozetkaServices.push(new Service('Втановлення розеток', 250, 2))
-rozetkaServices.push(new Service('Заміна проводки', 350, 3))
-rozetkaServices.push(new Service('Заміна лампи', 150, 1))
+rozetkaCompany.addService(new Service('Втановлення розеток', 250, 2))
+rozetkaCompany.addService(new Service('Заміна проводки', 350, 3))
+rozetkaCompany.addService(new Service('Заміна лампи', 150, 1))
 
 //-----------------ROZETKA BRANCHES-----------------
 
-let rozetkaBranches = []
-rozetkaBranches.push(new Branch('Україна', 'Ужгород', 'Свободи', 25))
-rozetkaBranches.push(new Branch('Україна', 'Мукачево', 'Духновича', 20))
-rozetkaBranches.push(new Branch('Україна', 'Хуст', 'Корятовича', 15))
-rozetkaBranches.push(new Branch('Україна', 'Ужгород', 'Корзо', 30))
+rozetkaCompany.addBranch(new Branch('Україна', 'Ужгород', 'Свободи', 25))
+rozetkaCompany.addBranch(new Branch('Україна', 'Мукачево', 'Духновича', 20))
+rozetkaCompany.addBranch(new Branch('Україна', 'Хуст', 'Корятовича', 15))
+rozetkaCompany.addBranch(new Branch('Україна', 'Ужгород', 'Корзо', 30))
 
-//-----------------ROZETKA CREATION DATE-----------------
-
-let rozetkaCreationDate = new CreationDate(2020, 8)
-
-//-----------------ROZETKA COMPANY-----------------
-
-let rozetkaCompany = new Company(
-   'Rozetka',
-   rozetkaCreationDate,
-   rozetkaServices,
-   rozetkaBranches
-)
+//----------------------------------
 
 document.write(rozetkaCompany)
 console.log(rozetkaCompany)
