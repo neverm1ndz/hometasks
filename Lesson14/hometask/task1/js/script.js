@@ -110,5 +110,5 @@ let day = parseInt(prompt('Введіть день'))
 
 let date1 = new TDAte(year, month, day)
 document.write(date1)
-date1.decreaseDay(3)
+date1.decreaseDay(874)
 console.log(date1)
