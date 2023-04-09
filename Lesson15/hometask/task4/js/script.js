@@ -43,10 +43,16 @@ class Warehouse {
       this.productsList.find(el => el.title === title).Quantity -= val
    }
    filterProductTitle(title) {
-      return this.productsList.filter(el => el.title === title)
+      let filtredProductsList = this.productsList.filter(
+         el => el.title === title
+      )
+      return filtredProductsList
    }
    filterMakerTitle(title) {
-      return this.productsList.filter(el => el.maker.title === title)
+      let filtredProductsList = this.productsList.filter(
+         el => el.maker.title === title
+      )
+      return filtredProductsList
    }
    toString() {
       return `${this.productsList.map(el => el.toString() + '<br>')}`

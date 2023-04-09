@@ -19,11 +19,15 @@ class TTime {
       this.minutes -= val % 60
       this.minutes = (this.minutes + 60) % 60
    }
+   toString() {
+      return `${this.hours} : ${this.minutes}`
+   }
 }
 
 let hours = parseInt(prompt('Години'))
 let minutes = parseInt(prompt('Хвилини'))
 let time = new TTime(hours, minutes)
-time.decreaseHours(38)
-time.decreaseMinutes(440)
+document.write(time)
+time.decreaseHours(1)
+time.decreaseMinutes(22343243243)
 console.log(time)
