@@ -1,9 +1,4 @@
-// Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба
-// перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні,
-// які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає
-// історію тестування у масиві у вигляді об'єктів
-// Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
-// Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History.  Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.
+// Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
 
 class MultChecker {
    constructor(minNum, maxNum) {
@@ -101,12 +96,11 @@ class TestManager {
             clearInterval(timer)
             this.printHistory()
          } else {
-            let checker = Math.random()
-            if (checker > 0.5)
-               checker = new MultChecker(this.minNum, this.maxNum)
-            else checker = new AddChecker(this.minNum, this.maxNum)
-            checker.getTest()
-            let testData = new TestData(checker)
+            let cheker = Math.random()
+            if (cheker > 0.5) cheker = new MultChecker(this.minNum, this.maxNum)
+            else cheker = new AddChecker(this.minNum, this.maxNum)
+            cheker.getTest()
+            let testData = new TestData(cheker)
             this.history.addTest(testData)
             count--
          }
