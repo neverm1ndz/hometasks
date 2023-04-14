@@ -1,0 +1,28 @@
+
+.container{
+	display: flex;
+	gap: 20px;
+}
+
+.list-body{
+	border: 1px solid black;
+	width: 250px;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 5px;
+}
+.total-list-body{
+
+}
+.sportsman{
+	padding: 5px;
+	border: 1px solid black;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.arrow{
+	max-width: 30px;
+}
