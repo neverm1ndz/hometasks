@@ -18,6 +18,7 @@ function getTable() {
 }
 
 function getAvSum() {
+   if (document.querySelector('.sum')) document.querySelector('.sum').remove()
    const inpList = document.querySelectorAll('.input_table')
    let sum = 0
    for (const input of inpList) {
@@ -25,7 +26,8 @@ function getAvSum() {
    }
    sum = sum / inpList.length
    let div = document.createElement('div')
-   div.innerHTML = `Sum = ${sum.toFixed(2)}`
+   div.className = 'sum'
+   div.innerHTML = `Average sum = ${sum.toFixed(2)}`
    document.body.append(div)
 }
 
