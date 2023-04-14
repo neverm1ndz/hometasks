@@ -1,9 +1,9 @@
 // Розробити калькулятор
 
-function operation(sum) {
+function operation(operation) {
    const firstNum = parseFloat(document.querySelector('.first_num').value)
    const secondNum = parseFloat(document.querySelector('.second_num').value)
-   const result = sum(firstNum, secondNum)
+   const result = operation(firstNum, secondNum)
    document.querySelector('.result').value = result
 }
 
