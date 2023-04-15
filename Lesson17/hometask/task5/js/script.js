@@ -1,23 +1,41 @@
-// Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)
+// Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз.
+// При кліку на танк він вибухає і зникає з екрану.
 
-function getRandomNum(min, max) {
-   return min + Math.floor(Math.random() * (max - min + 1))
-}
+class Bayraktar {
+   constructor(imgSrc, interval) {
+      this.imgSrc = imgSrc
+      this.interval = interval
+   }
+   getRandomPosition() {
+      return Math.floor(Math.random() * 97)
+   }
 
-function createTable(rows, columns) {
-   const table = document.createElement('table')
-   table.style.border = '1px solid black'
-   document.body.prepend(table)
-   for (let i = 0; i < rows; i++) {
-      const row = document.createElement('tr')
-      table.append(row)
-      for (let j = 0; j < columns; j++) {
-         const column = document.createElement('td')
-         column.style.border = '1px solid black'
-         column.innerHTML = getRandomNum(10, 99)
-         row.append(column)
-      }
+   destroyTank(tank, int) {
+      tank.style.transform = 'scale(0) rotate(360deg)'
+      clearInterval(int)
+      setTimeout(() => {
+         tank.remove()
+      }, 900)
+   }
+   render(containerSelector) {
+      setInterval(() => {
+         const tank = document.createElement('img')
+         tank.className = 'tank'
+         tank.src = this.imgSrc
+         tank.style.left = this.getRandomPosition() + '%'
+         tank.style.top = '-8%'
+         tank.style.transition =
+            'top 0.2s ease-in-out 0s, transform 1s ease-in-out 0s'
+         document.querySelector(containerSelector).append(tank)
+         let int = setInterval(() => {
+            tank.style.top = parseFloat(tank.style.top) + 3 + '%'
+         }, 200)
+         tank.onclick = this.destroyTank.bind(this, tank, int)
+      }, this.interval * 1000)
    }
 }
 
-createTable(3, 4)
+window.onload = function () {
+   const bayraktar = new Bayraktar('./img/tank.png', 2)
+   bayraktar.render('.container')
+}

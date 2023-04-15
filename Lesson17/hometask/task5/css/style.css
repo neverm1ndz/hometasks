@@ -1,0 +1,12 @@
+body{
+	margin: 0;
+}
+.container{
+	position: relative;
+	height: 100vh;
+}
+
+.tank{
+	position: absolute;
+	width: 50px;
+}
