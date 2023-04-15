@@ -5,6 +5,7 @@ class Bayraktar {
    constructor(imgSrc, interval) {
       this.imgSrc = imgSrc
       this.interval = interval
+      this.counter = 0
    }
    getRandomPosition() {
       return Math.floor(Math.random() * 97)
@@ -15,6 +16,7 @@ class Bayraktar {
       clearInterval(int)
       setTimeout(() => {
          tank.remove()
+         document.querySelector('.counter').innerHTML = ++this.counter
       }, 900)
    }
    render(containerSelector) {
@@ -29,6 +31,7 @@ class Bayraktar {
          document.querySelector(containerSelector).append(tank)
          let int = setInterval(() => {
             tank.style.top = parseFloat(tank.style.top) + 3 + '%'
+            if (parseFloat(tank.style.top) > 100) tank.remove()
          }, 200)
          tank.onclick = this.destroyTank.bind(this, tank, int)
       }, this.interval * 1000)
