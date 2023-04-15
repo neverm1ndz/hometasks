@@ -13,7 +13,7 @@ class Card {
    }
 
    render(containerSelector) {
-      const cardContainer = document.createElement('div')
+      const cardContainer = document.createElement('a')
       cardContainer.className = 'card-container'
       cardContainer.href = this.link
       cardContainer.target = '_blank'
