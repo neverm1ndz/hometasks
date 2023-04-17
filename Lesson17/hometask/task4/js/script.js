@@ -17,10 +17,10 @@ class Stars {
       return 1 + Math.floor(Math.random() * 97)
    }
 
-   //----Для скейла--------------
-   // random() {
-   //    return (Math.floor(Math.random() * ((15 - 5) / 1 + 1)) * 1 + 5) / 10
-   // }
+   // ----Для скейла--------------
+   random() {
+      return (Math.floor(Math.random() * ((15 - 5) / 1 + 1)) * 1 + 5) / 10
+   }
 
    render(containerSelector) {
       for (let i = 0; i < this.starsNum; i++) {
@@ -43,12 +43,12 @@ class Stars {
             }
          }, 200)
 
-         //-------З скейлом варіант---------------------
+         // -------З скейлом варіант---------------------
          // setInterval(() => {
          //    star.style.transition = `transform ${this.random()}s ease-in-out 0s`
-         //    star.style.transform = 'scale(3)'
+         //    star.style.transform = 'scale(2)'
          //    if (
-         //       getComputedStyle(star).transform === 'matrix(3, 0, 0, 3, 0, 0)'
+         //       getComputedStyle(star).transform === 'matrix(2, 0, 0, 2, 0, 0)'
          //    ) {
          //       star.style.transition = 'none'
          //       // star.style.width = this.minSize + 'px'
@@ -62,6 +62,6 @@ class Stars {
 }
 
 window.onload = function () {
-   let stars = new Stars(80, './img/star.svg', 10, 40)
+   let stars = new Stars(80, './img/star.svg', 10, 25)
    stars.render('.container')
 }

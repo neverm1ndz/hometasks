@@ -30,8 +30,7 @@ class Snow {
 }
 
 window.onload = function () {
-   let i
-   for (i = 0; i < 30; i++) {
+   for (let i = 0; i < 100; i++) {
       let snow = new Snow()
       snow.render('.container')
    }
