@@ -1,0 +1,9 @@
+
+.container{
+	position: relative;
+	height: 100vh;
+}
+.snow{
+	width: 20px;
+	position: absolute;
+}
